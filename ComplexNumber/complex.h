@@ -15,7 +15,15 @@ public:
     //Constructor with two input variable
     //Both input parameter has a default value 0.0
     //Therefore it can be used with only one parameter or without parameters
-    explicit Complex(double re = 0.0, double imag = 0.0) ;
+
+    //The explicit keyword does not allow us to use this contructor
+    //a Converison constructor
+    explicit Complex(double re = 0.0, double imag = 0.0);
+
+    Complex(double re)
+    {
+        this->re = re;
+    }
 
     //Member function for printing out the values
     void print();
@@ -41,7 +49,12 @@ public:
     Complex operator*(const Complex& theOther)const;
     Complex operator/(const Complex& theOther)const;
 
+    //because it is not a member function it should be the friend of
+    //the Complex class to get access to its private class variables
+    friend Complex operator/ (double d, const Complex& theOther);
 };
+
+
 
 //close the if statement (started at the begining of the file)
 #endif // COMPLEX_H

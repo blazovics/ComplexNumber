@@ -66,6 +66,8 @@ Complex Complex::operator+(const Complex &theOther) const
 Complex Complex::operator-(const Complex &theOther) const
 {
     return *this + -theOther;
+    //alternative way
+    // return *this + theOther.operator-();
 }
 
 Complex Complex::operator*(const Complex &theOther)const
@@ -84,5 +86,36 @@ Complex Complex::operator/(const Complex &theOther) const
     Complex z = *this * Conjugate(theOther);
     z.re /= den;
     z.im /= den;
+    return z;
+}
+
+Complex operator* (double d, const Complex& theOther)
+{
+    //If we do not create a conversion constructor
+    //or remove the explicit keyword from our current constructor
+    //we cannot use it to create a Complex from a double
+    return theOther * d;
+}
+
+Complex operator- (double d, const Complex& theOther)
+{
+    //If we do not create a conversion constructor
+    //or remove the explicit keyword from our current constructor
+    //we cannot use it to create a Complex from a double
+    return theOther - d;
+}
+
+Complex operator+ (double d, const Complex& theOther)
+{
+    //If we do not create a conversion constructor
+    //or remove the explicit keyword from our current constructor
+    //we cannot use it to create a Complex from a double
+    return theOther + d;
+}
+
+Complex operator/ (double d, const Complex& theOther)
+{
+    double den = theOther.re * theOther.re + theOther.im*theOther.im;
+    Complex z(theOther.re * d / den, theOther.im * d /den);
     return z;
 }

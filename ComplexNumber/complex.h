@@ -18,12 +18,16 @@ public:
 
     //The explicit keyword does not allow us to use this contructor
     //a Converison constructor
-    explicit Complex(double re = 0.0, double imag = 0.0);
+    //therefore we removed it
+    Complex(double re = 0.0, double imag = 0.0);
 
-    Complex(double re)
-    {
-        this->re = re;
-    }
+    //This is a conversion constructor, however we have a constructor
+    //which can take one double parameter the one above
+    //Therefore it will be ambiguous for the compiler
+    //Complex(double re)
+    //{
+    //    this->re = re;
+    //}
 
     //Member function for printing out the values
     void print();
@@ -54,6 +58,12 @@ public:
     friend Complex operator/ (double d, const Complex& theOther);
 };
 
+//We should add the declaration of these functions into the header file
+//otherwise the compiler would not know about them when we use them in
+//the main.cpp
+Complex operator* (double d, const Complex& theOther);
+Complex operator- (double d, const Complex& theOther);
+Complex operator+ (double d, const Complex& theOther);
 
 
 //close the if statement (started at the begining of the file)

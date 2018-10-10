@@ -42,11 +42,31 @@ int main()
     Complex c7 = c3.operator*(c4);
     Complex c8 = c3/c4;
 
+    //c3.print();
+    //c4.print();
+    //c6.print();
+    //c7.print();
+    //c8.print();
+
+    //Implicit type casting
+    Complex c9 = c3 * 3.0;
+    Complex c10 = c3.operator * (3.0);
+
+    Complex c11 = 10;
+
+    Complex c12 = 3.1 * c3;
+    Complex c13 = 2.2 / c3;
+    Complex c14 = 2.2 - c3;
+    Complex c15 = 2.2 + c3;
+
     c3.print();
-    c4.print();
-    c6.print();
-    c7.print();
-    c8.print();
+    c9.print();
+    c10.print();
+    c11.print();
+    c12.print();
+    c13.print();
+    c14.print();
+    c15.print();
 
 
     return 0;

@@ -16,9 +16,9 @@ int main()
     Complex c3(10.0,0.1);
 
     //A simple printig function
-    c1.print();
-    c2.print();
-    c3.print();
+    //c1.print();
+    //c2.print();
+    //c3.print();
 
     //Here is how we can use a static function
     //First we should mark the namespace/class
@@ -33,10 +33,21 @@ int main()
     //c4 will be a new instance
     Complex c4 = Complex::Conjugate(c3);
 
-    c1.print();
-    c2.print();
+    //c1.print();
+    //c2.print();
+    //c3.print();
+    //c4.print();
+
+    Complex c6 = c3*c4;
+    Complex c7 = c3.operator*(c4);
+    Complex c8 = c3/c4;
+
     c3.print();
     c4.print();
+    c6.print();
+    c7.print();
+    c8.print();
+
 
     return 0;
 }

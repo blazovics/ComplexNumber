@@ -56,3 +56,33 @@ Complex Complex::Conjugate(Complex z)
     z.im = -z.im;
     return z;
 }
+
+Complex Complex::operator+(const Complex &theOther) const
+{
+    Complex z(theOther.re + re, theOther.im + im);
+    return z;
+}
+
+Complex Complex::operator-(const Complex &theOther) const
+{
+    return *this + -theOther;
+}
+
+Complex Complex::operator*(const Complex &theOther)const
+{
+    //theOther.im = 2.0; cannot be performed because theOther is const
+    //this->re = 44.0;  cannot be performed because this method is const
+
+    Complex z(theOther.re * this->re - theOther.im * this->im, this->re * theOther.im + this->im * theOther.re);
+    return z;
+}
+
+
+Complex Complex::operator/(const Complex &theOther) const
+{
+    double den = theOther.re * theOther.re + theOther.im * theOther.im;
+    Complex z = *this * Conjugate(theOther);
+    z.re /= den;
+    z.im /= den;
+    return z;
+}

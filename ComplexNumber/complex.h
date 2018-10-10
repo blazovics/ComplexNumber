@@ -15,7 +15,7 @@ public:
     //Constructor with two input variable
     //Both input parameter has a default value 0.0
     //Therefore it can be used with only one parameter or without parameters
-    Complex(double re = 0.0, double imag = 0.0);
+    explicit Complex(double re = 0.0, double imag = 0.0) ;
 
     //Member function for printing out the values
     void print();
@@ -28,6 +28,19 @@ public:
     static double Im(Complex z);
 
     static Complex Conjugate(Complex z);
+
+    //operator override member function
+    //implemented inside the class declaration
+    Complex operator-()const{
+        Complex z(-re,-im);
+        return z;
+    }
+
+    Complex operator+(const Complex& theOther)const;
+    Complex operator-(const Complex& theOther)const;
+    Complex operator*(const Complex& theOther)const;
+    Complex operator/(const Complex& theOther)const;
+
 };
 
 //close the if statement (started at the begining of the file)
